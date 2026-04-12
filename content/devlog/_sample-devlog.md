@@ -1,6 +1,6 @@
 ---
 title: "devlog: setting up the blog"
-date: "2025-04-11"
+date: "2026-04-11"
 project: "blog.thealxlabs.ca"
 tags: [devlog, next.js, setup]
 summary: "Built the blog from scratch. Next.js 15, Space Mono, brutalist design system."
