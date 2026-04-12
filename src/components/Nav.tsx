@@ -3,35 +3,40 @@ import Link from 'next/link'
 export default function Nav() {
   return (
     <nav
-      className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-[#0a0a0a] border-b border-[#222]"
+      className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-[#0a0a0a] border-b border-[#161616]"
       aria-label="Site navigation"
+      style={{ backdropFilter: 'blur(12px)' }}
     >
-      {/* Brand — acid yellow, links to main site */}
+      {/* Brand */}
       <Link
-        href="https://thealxlabs.ca"
-        className="text-sm font-bold tracking-widest text-[#e8ff47] no-underline hover:text-[#e8ff47] opacity-100 hover:opacity-80 transition-opacity duration-0"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/"
+        className="flex items-center gap-3 no-underline group"
       >
-        THEALXLABS
+        {/* Accent bar */}
+        <span
+          className="inline-block w-1 h-5 group-hover:h-4 transition-all duration-150"
+          style={{ background: '#e8ff47' }}
+        />
+        <span className="text-sm font-bold tracking-widest text-[#f0f0f0] group-hover:text-[#e8ff47] transition-colors duration-150">
+          THEALXLABS
+        </span>
+        <span className="text-xs text-[#333] tracking-wider hidden sm:inline">/ BLOG</span>
       </Link>
 
-      {/* Navigation links — all caps, hover turns accent yellow */}
-      <div className="flex items-center gap-8">
+      {/* Nav links */}
+      <div className="flex items-center gap-6">
         {[
           { label: 'BLOG', href: '/blog' },
-          { label: 'PROJECTS', href: 'https://thealxlabs.ca/projects' },
-          { label: 'GITHUB', href: 'https://github.com/thealxlabs' },
+          { label: 'GITHUB', href: 'https://github.com/thegreatalxx' },
+          { label: 'SITE', href: 'https://thealxlabs.ca' },
         ].map(({ label, href }) => {
           const isExternal = href.startsWith('http')
           return (
             <Link
               key={label}
               href={href}
-              className="text-xs tracking-widest text-[#f0f0f0] no-underline hover:text-[#e8ff47]"
-              {...(isExternal
-                ? { target: '_blank', rel: 'noopener noreferrer' }
-                : {})}
+              className="text-xs tracking-widest text-[#444] no-underline hover:text-[#e8ff47] transition-colors duration-150"
+              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
               {label}
             </Link>
