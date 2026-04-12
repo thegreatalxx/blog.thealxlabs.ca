@@ -1,26 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-background: #0a0a0a;
+  --color-foreground: #f0f0f0;
+  --color-accent: #e8ff47;
+  --color-muted: #555555;
+  --color-border: #222222;
+  --color-surface: #111111;
+
+  /* Font — Space Mono for everything */
+  --font-sans: "Space Mono", ui-monospace, monospace;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  /* Border radius — zero everywhere */
+  --radius: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-full: 0px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Hard override — nothing gets a border radius */
+*, *::before, *::after {
+  border-radius: 0 !important;
+  font-family: "Space Mono", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: #0a0a0a;
+  color: #f0f0f0;
+  min-height: 100%;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Selection highlight */
+::selection {
+  background: #e8ff47;
+  color: #0a0a0a;
+}
+
+/* Thin scrollbar with acid yellow thumb */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #e8ff47;
+}
+
+/* Reset heading margins */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: "Space Mono", ui-monospace, monospace;
+}
+
+/* Prose overrides for the design system */
+.prose {
+  --tw-prose-body: #f0f0f0;
+  --tw-prose-headings: #f0f0f0;
+  --tw-prose-links: #e8ff47;
+  --tw-prose-bold: #f0f0f0;
+  --tw-prose-counters: #555;
+  --tw-prose-bullets: #555;
+  --tw-prose-hr: #222;
+  --tw-prose-quotes: #f0f0f0;
+  --tw-prose-quote-borders: #e8ff47;
+  --tw-prose-captions: #555;
+  --tw-prose-code: #e8ff47;
+  --tw-prose-pre-code: #f0f0f0;
+  --tw-prose-pre-bg: #111;
+  --tw-prose-th-borders: #222;
+  --tw-prose-td-borders: #222;
+  color: #f0f0f0;
+  font-family: "Space Mono", ui-monospace, monospace;
+  max-width: none;
+}
+
+/* Code blocks */
+.prose pre {
+  background: #111 !important;
+  border: 1px solid #222;
+  border-radius: 0 !important;
+  font-family: "Space Mono", ui-monospace, monospace;
+}
+
+/* Inline code */
+.prose code:not(pre code) {
+  background: #111;
+  color: #e8ff47;
+  padding: 0.1em 0.3em;
+  border-radius: 0 !important;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.875em;
+}
+
+/* Remove backtick pseudo-elements added by @tailwindcss/typography */
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: "" !important;
+}
+
+/* Links */
+.prose a {
+  color: #e8ff47;
+  text-decoration: none;
+}
+.prose a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  border-left: 2px solid #e8ff47;
+  background: #111;
+  padding: 0.75rem 1rem;
+  border-radius: 0 !important;
+  font-style: normal;
+  color: #f0f0f0;
+}
+.prose blockquote p {
+  margin: 0;
+}
+
+/* Headings stay Space Mono weight */
+.prose h1, .prose h2, .prose h3,
+.prose h4, .prose h5, .prose h6 {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+/* Tables */
+.prose table {
+  border-collapse: collapse;
+}
+.prose th, .prose td {
+  border: 1px solid #222;
+}
+
+/* HR */
+.prose hr {
+  border-color: #222;
 }
